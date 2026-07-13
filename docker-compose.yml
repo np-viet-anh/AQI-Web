@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  # Cấu hình cho Flask Backend
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    networks:
+      - aqi-network
+
+  # Cấu hình cho React Frontend
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend    # Đợi backend chạy lên trước rồi mới chạy frontend
+    networks:
+      - aqi-network
+
+# Tạo một mạng ảo để 2 container kết nối với nhau
+networks:
+  aqi-network:
+    driver: bridge

@@ -1,5 +1,5 @@
 # Stage 1: Build ứng dụng React
-FROM node:18-alpine AS builder
+FROM node:20-alpine AS builder
 WORKDIR /app
 # Copy file quản lý thư viện và cài đặt
 COPY package.json package-lock.json* ./
